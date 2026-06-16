@@ -308,7 +308,289 @@
                 🎬 Check out the live drawing video above to see how we selected the winners!
             </p>
         </div>
-        
+       <!DOCTYPE html>
+<!-- ============================================================
+     N.O.I.S.E. 385 — Galería de Ganadores (preview)
+     Este archivo es para que VEAS cómo queda. Para añadirlo a la
+     página de resultados, copia SOLO el bloque marcado abajo entre
+     <!-- ===== GALERÍA INICIO ===== --> y <!-- ===== GALERÍA FIN ===== -->
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N.O.I.S.E. 385 — Winners</title>
+<style>
+  /* Solo para el preview: fondo de marca. NO copiar esto a la página real. */
+  body{margin:0;background:linear-gradient(160deg,#0d0a2e 0%,#1a0a3e 45%,#050814 100%);min-height:100vh;}
+</style>
+</head>
+<body>
+
+<!-- ===== GALERÍA INICIO  (copiar desde aquí) ===== -->
+<section class="n385-gallery" id="n385Gallery" aria-labelledby="n385GalleryTitle">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+    .n385-gallery{
+      --g-gold:#F2C14E; --g-gold-2:#e6a817; --g-cyan:#00E8FF;
+      --g-text:#F0F4FF; --g-slate:#8892B0;
+      --g-blue:#16C2FF; --g-purple:#6A4BFF;
+      font-family:'Barlow',system-ui,sans-serif;
+      color:var(--g-text);
+      max-width:1180px; margin:0 auto; padding:64px 22px 72px;
+      box-sizing:border-box;
+    }
+    .n385-gallery *{box-sizing:border-box;}
+
+    .n385-eyebrow{
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+      font-size:14px; color:var(--g-cyan); margin:0 0 10px;
+      display:flex; align-items:center; gap:12px; justify-content:center;
+    }
+    .n385-eyebrow::before,.n385-eyebrow::after{
+      content:""; height:1px; width:34px;
+      background:linear-gradient(90deg,transparent,var(--g-cyan));
+    }
+    .n385-eyebrow::after{transform:scaleX(-1);}
+    .n385-title{
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:900; text-transform:uppercase; text-align:center;
+      font-size:clamp(34px,6vw,58px); line-height:1; margin:0 0 14px;
+      letter-spacing:.01em;
+      background:linear-gradient(92deg,var(--g-gold),var(--g-gold-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .n385-sub{
+      text-align:center; color:var(--g-slate); font-size:17px;
+      max-width:560px; margin:0 auto 44px; line-height:1.5;
+    }
+
+    /* Mosaico (masonry con columnas) */
+    .n385-grid{ column-gap:18px; column-count:1; }
+    @media(min-width:600px){ .n385-grid{ column-count:2; } }
+    @media(min-width:1000px){ .n385-grid{ column-count:3; } }
+
+    .n385-card{
+      position:relative; display:block; width:100%;
+      margin:0 0 18px; padding:0; border:0; background:transparent;
+      border-radius:16px; overflow:hidden; cursor:pointer;
+      break-inside:avoid; -webkit-column-break-inside:avoid;
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+      transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
+      isolation:isolate;
+    }
+    /* Borde-glow de marca (cyan→azul→morado→dorado) */
+    .n385-card::before{
+      content:""; position:absolute; inset:0; border-radius:16px;
+      padding:2px; z-index:3; pointer-events:none; opacity:0;
+      background:linear-gradient(135deg,var(--g-cyan),var(--g-purple) 55%,var(--g-gold));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude;
+      transition:opacity .35s;
+    }
+    .n385-card img{
+      display:block; width:100%; height:auto; border-radius:16px;
+      transition:transform .55s cubic-bezier(.2,.7,.2,1);
+    }
+    .n385-cap{
+      position:absolute; left:0; right:0; bottom:0; z-index:2;
+      padding:34px 18px 16px;
+      background:linear-gradient(to top,rgba(5,8,20,.92),rgba(5,8,20,.55) 55%,transparent);
+      transform:translateY(8px); opacity:0; transition:transform .35s,opacity .35s;
+    }
+    .n385-cap-name{
+      font-family:'Barlow Condensed',sans-serif; font-weight:800;
+      text-transform:uppercase; letter-spacing:.02em; font-size:22px;
+      line-height:1.05; margin:0; color:var(--g-text);
+    }
+    .n385-cap-prize{
+      margin:4px 0 0; font-size:14px; font-weight:600; color:var(--g-cyan);
+    }
+    /* Lupa */
+    .n385-zoom{
+      position:absolute; top:12px; right:12px; z-index:2;
+      width:38px; height:38px; border-radius:50%;
+      background:rgba(5,8,20,.55); backdrop-filter:blur(4px);
+      display:grid; place-items:center; opacity:0;
+      transform:scale(.85); transition:opacity .3s,transform .3s;
+    }
+    .n385-zoom svg{width:18px;height:18px;stroke:var(--g-text);}
+
+    .n385-card:hover,.n385-card:focus-visible{
+      transform:translateY(-6px); box-shadow:0 18px 44px rgba(0,0,0,.6);
+      outline:none;
+    }
+    .n385-card:hover img,.n385-card:focus-visible img{transform:scale(1.06);}
+    .n385-card:hover::before,.n385-card:focus-visible::before{opacity:1;}
+    .n385-card:hover .n385-cap,.n385-card:focus-visible .n385-cap,
+    .n385-card:hover .n385-zoom,.n385-card:focus-visible .n385-zoom{
+      transform:translateY(0) scale(1); opacity:1;
+    }
+
+    /* ---------- LIGHTBOX ---------- */
+    .n385-lb{
+      position:fixed; inset:0; z-index:9999; display:none;
+      align-items:center; justify-content:center;
+      background:rgba(3,5,14,.92); backdrop-filter:blur(6px);
+      padding:24px;
+    }
+    .n385-lb.open{display:flex; animation:n385fade .25s ease;}
+    @keyframes n385fade{from{opacity:0}to{opacity:1}}
+    .n385-lb-stage{
+      position:relative; max-width:min(92vw,720px);
+      display:flex; flex-direction:column; align-items:center;
+    }
+    .n385-lb-img{
+      max-width:100%; max-height:78vh; border-radius:14px;
+      box-shadow:0 24px 70px rgba(0,0,0,.7);
+      border:1px solid rgba(0,232,255,.18);
+    }
+    .n385-lb-cap{ text-align:center; margin-top:16px; }
+    .n385-lb-name{
+      font-family:'Barlow Condensed',sans-serif; font-weight:800;
+      text-transform:uppercase; font-size:24px; margin:0; color:var(--g-text);
+    }
+    .n385-lb-prize{ margin:4px 0 0; color:var(--g-cyan); font-weight:600; font-size:15px; }
+    .n385-lb-count{ margin:10px 0 0; color:var(--g-slate); font-size:13px; letter-spacing:.18em; }
+
+    .n385-lb-btn{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:50px; height:50px; border-radius:50%; border:0; cursor:pointer;
+      background:linear-gradient(135deg,var(--g-blue),var(--g-purple));
+      color:#fff; display:grid; place-items:center;
+      box-shadow:0 8px 24px rgba(0,0,0,.4); transition:transform .2s,filter .2s;
+    }
+    .n385-lb-btn:hover{transform:translateY(-50%) scale(1.08); filter:brightness(1.12);}
+    .n385-lb-prev{left:-66px;}
+    .n385-lb-next{right:-66px;}
+    .n385-lb-btn svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2.4;}
+    .n385-lb-close{
+      position:fixed; top:20px; right:24px; width:46px; height:46px;
+      border-radius:50%; border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.06); color:var(--g-text);
+      font-size:24px; line-height:1; cursor:pointer; transition:.2s;
+    }
+    .n385-lb-close:hover{background:rgba(255,255,255,.14); transform:rotate(90deg);}
+
+    @media(max-width:680px){
+      .n385-lb-prev{left:6px;} .n385-lb-next{right:6px;}
+      .n385-lb-btn{width:42px;height:42px;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .n385-gallery *{transition:none !important; animation:none !important;}
+    }
+  </style>
+
+  <p class="n385-eyebrow">2nd Giveaway Winners</p>
+  <h2 class="n385-title" id="n385GalleryTitle">Our Winners</h2>
+  <p class="n385-sub">Congratulations to our latest giveaway winners — thank you for being part of the movement.</p>
+
+  <div class="n385-grid" id="n385Grid"></div>
+
+  <!-- Lightbox -->
+  <div class="n385-lb" id="n385Lb" role="dialog" aria-modal="true" aria-label="Winner photo viewer">
+    <button class="n385-lb-close" id="n385Close" aria-label="Close">&times;</button>
+    <button class="n385-lb-btn n385-lb-prev" id="n385Prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="n385-lb-stage">
+      <img class="n385-lb-img" id="n385LbImg" src="" alt="">
+      <div class="n385-lb-cap">
+        <p class="n385-lb-name" id="n385LbName"></p>
+        <p class="n385-lb-prize" id="n385LbPrize"></p>
+        <p class="n385-lb-count" id="n385LbCount"></p>
+      </div>
+    </div>
+    <button class="n385-lb-btn n385-lb-next" id="n385Next" aria-label="Next">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <script>
+  (function(){
+    /* =========================================================
+       👉 EDITA AQUÍ: lista de ganadores.
+       - "name": deja "" para no mostrar nombre; pon el nombre para mostrarlo.
+       - "prize": el premio que ganó.
+       - Para añadir un ganador nuevo, copia una línea { ... } más.
+       - Si subes las fotos a Cloudinary, reemplaza "img" por la URL.
+       ========================================================= */
+    var WINNERS = [
+      { img: "winner-1.jpg", name: "", prize: "$50 Wawa Gift Card" },
+      { img: "winner-2.jpg", name: "", prize: "$50 Wawa Gift Card" }
+    ];
+    /* ========================================================= */
+
+    var grid  = document.getElementById('n385Grid');
+    var lb     = document.getElementById('n385Lb');
+    var lbImg  = document.getElementById('n385LbImg');
+    var lbName = document.getElementById('n385LbName');
+    var lbPrize= document.getElementById('n385LbPrize');
+    var lbCount= document.getElementById('n385LbCount');
+    var current= 0;
+
+    WINNERS.forEach(function(w, i){
+      var btn = document.createElement('button');
+      btn.className = 'n385-card';
+      btn.type = 'button';
+      btn.setAttribute('aria-label','View photo: ' + (w.name || 'winner ' + (i+1)));
+      var capName = w.name ? '<p class="n385-cap-name">'+w.name+'</p>' : '';
+      btn.innerHTML =
+        '<img src="'+w.img+'" alt="'+(w.name||'Giveaway winner '+(i+1))+'" loading="lazy">' +
+        '<span class="n385-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></span>' +
+        '<div class="n385-cap">'+capName+'<p class="n385-cap-prize">'+w.prize+'</p></div>';
+      btn.addEventListener('click', function(){ open(i); });
+      grid.appendChild(btn);
+    });
+
+    function render(){
+      var w = WINNERS[current];
+      lbImg.src = w.img;
+      lbImg.alt = w.name || 'Giveaway winner';
+      lbName.textContent  = w.name || '';
+      lbName.style.display = w.name ? 'block' : 'none';
+      lbPrize.textContent = w.prize;
+      lbCount.textContent = (current+1) + ' / ' + WINNERS.length;
+    }
+    function open(i){
+      current = i; render();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('n385Close').focus();
+    }
+    function close(){
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function step(d){
+      current = (current + d + WINNERS.length) % WINNERS.length;
+      render();
+    }
+
+    document.getElementById('n385Close').addEventListener('click', close);
+    document.getElementById('n385Prev').addEventListener('click', function(){ step(-1); });
+    document.getElementById('n385Next').addEventListener('click', function(){ step(1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowLeft') step(-1);
+      if(e.key === 'ArrowRight') step(1);
+    });
+    // Oculta flechas si solo hay 1 foto
+    if(WINNERS.length < 2){
+      document.getElementById('n385Prev').style.display='none';
+      document.getElementById('n385Next').style.display='none';
+    }
+  })();
+  </script>
+</section>
+<!-- ===== GALERÍA FIN  (copiar hasta aquí) ===== -->
+
+</body>
+</html> 
         <!-- Winners Section REMOVED -->
         
         <!-- Footer -->
